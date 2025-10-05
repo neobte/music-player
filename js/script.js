@@ -65,6 +65,21 @@ const volumeSlider = d.querySelector("#volume-slider");
 const volumeDisplay = d.querySelector("#volume-display");
 let currentVolume = 1; // Volume 100 %
 
+d.addEventListener("DOMContentLoaded", () => {
+    init();
+});
+
+const init = () => {
+    // 1. Cargamos el indice cero
+    loadSong(songsCopy[index]);
+    // 2. Mostramos la lista de canciones
+    displayRows(songsCopy);
+    // Reseteamos los valores
+    volumeSlider.value = 100;
+    audioCurrentTimeSlider.value = 0;
+    dataTable.parentElement.scrollTop = 0;
+}
+
 const loadSong = song => {
     audio.src = song.src;
     audio.dataset.songId = song.id;
@@ -79,22 +94,7 @@ const loadSong = song => {
 
     // background: linear-gradient(to right, #6f0000, #200122);
     // https://uigradients.com
-    d.body.style.background = `linear-gradient(to right, ${getRandomHexColor(16)}, ${getRandomHexColor(16)})`;
-}
-
-d.addEventListener("DOMContentLoaded", () => {
-    init();
-});
-
-const init = () => {
-    // 1. Cargamos el indice cero
-    loadSong(songsCopy[index]);
-    // 2. Mostramos la lista de canciones
-    displayRows(songsCopy);
-    // Reseteamos los valores
-    volumeSlider.value = 100;
-    audioCurrentTimeSlider.value = 0;
-    dataTable.parentElement.scrollTop = 0;
+    d.body.style.background = `linear-gradient(to right, ${getRandomHexColor(32)}, ${getRandomHexColor(32)})`;
 }
 
 playPauseBtn.addEventListener("click", () => {
@@ -320,20 +320,4 @@ const getRandomHexColor = (max = 256) => {
         ((Math.random() * max) | 0).toString(16).padStart(2, '0') +
         ((Math.random() * max) | 0).toString(16).padStart(2, '0') +
         ((Math.random() * max) | 0).toString(16).padStart(2, '0');
-}
-
-function getRandomHexColor2(max = 256) {
-    // No permite numeros fuera del rango 0 - 256
-    // if ( !(-1 < max && max < 257) ) return;
-    if (0 > max || max > 256) return;
-    // Generamos numeros aleatorios entre [0 - (max - 1)] ambos incluidos
-    const red = (Math.random() * max) | 0;
-    const green = (Math.random() * max) | 0;
-    const blue = (Math.random() * max) | 0;
-
-    return "#" +
-        (red < 16 ? "0" : "") + red.toString(16) +
-        (green < 16 ? "0" : "") + green.toString(16) +
-        (blue < 16 ? "0" : "") + blue.toString(16);
-
 }
