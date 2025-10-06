@@ -32,7 +32,7 @@ songs.sort((a, b) => a.artist > b.artist ? 1 : a.artist < b.artist ? -1 : 0);
 
 let songsCopy = [...songs];
 
-const audio = new Audio();
+const audioPlayer = new Audio();
 
 // Variables
 let index = 0;
@@ -81,9 +81,9 @@ const init = () => {
 }
 
 const loadSong = song => {
-    audio.src = song.src;
-    audio.dataset.songId = song.id;
-    audio.load();
+    audioPlayer.src = song.src;
+    audioPlayer.dataset.songId = song.id;
+    audioPlayer.load();
     songTitle.textContent = `🎵 ${song.artist} - ${song.title} 🎵`;
 
     if (songTitle.scrollWidth > parentElementWidth) {
@@ -98,13 +98,13 @@ const loadSong = song => {
 }
 
 playPauseBtn.addEventListener("click", () => {
-    if (audio.src === "") return;
-    if (audio.paused) {
-        audio.play();
+    if (audioPlayer.src === "") return;
+    if (audioPlayer.paused) {
+        audioPlayer.play();
         playIcon.style.display = "none";
         pauseIcon.style.display = "inline";
     } else {
-        audio.pause();
+        audioPlayer.pause();
         playIcon.style.display = "inline";
         pauseIcon.style.display = "none";
     }
@@ -112,9 +112,9 @@ playPauseBtn.addEventListener("click", () => {
 
 forwardBtn.addEventListener("click", () => {
     index = (index + 1) % totalSongs;
-    if (!audio.paused) {
+    if (!audioPlayer.paused) {
         loadSong(songsCopy[index]);
-        audio.play();
+        audioPlayer.play();
     } else {
         loadSong(songsCopy[index]);
     }
@@ -124,9 +124,9 @@ forwardBtn.addEventListener("click", () => {
 
 backwardBtn.addEventListener("click", () => {
     index = (index - 1 + totalSongs) % totalSongs;
-    if (!audio.paused) {
+    if (!audioPlayer.paused) {
         loadSong(songsCopy[index]);
-        audio.play();
+        audioPlayer.play();
     } else {
         loadSong(songsCopy[index]);
     }
@@ -140,9 +140,9 @@ shuffleBtn.addEventListener("click", () => {
     shuffleBtn.style.color = isShuffle ? "#ff9800" : "currentColor";
     if (isShuffle) {
         // Encuentra el elemento pero no lo elimina del arreglo
-        // const element = songsCopy.find(song => song.id == audio.dataset["songId"]);
+        // const element = songsCopy.find(song => song.id == audioPlayer.dataset["songId"]);
         // Encuentra el elemento y lo extrae del arreglo
-        const currentlyPlayingSong = songsCopy.splice(songs.findIndex(song => song.id == audio.dataset['songId']), 1)[0];
+        const currentlyPlayingSong = songsCopy.splice(songs.findIndex(song => song.id == audioPlayer.dataset['songId']), 1)[0];
         // Barajamos el arreglo sin la cancion actualmente en reproduccion
         songsCopy = shuffle(songsCopy);
         // Enviamos al principio la canción que esta actualmente en reproducción despues de la mezcla
@@ -151,7 +151,7 @@ shuffleBtn.addEventListener("click", () => {
         index = 0;
     } else {
         // Buscamos el índice en el array original
-        index = songs.findIndex(song => song.id == audio.dataset['songId']);
+        index = songs.findIndex(song => song.id == audioPlayer.dataset['songId']);
         // Devolvemos el orden del array original
         songsCopy = [...songs];
     }
@@ -163,8 +163,8 @@ shuffleBtn.addEventListener("click", () => {
 });
 
 repeatBtn.addEventListener("click", () => {
-    audio.loop = !audio.loop;
-    if (audio.loop) {
+    audioPlayer.loop = !audioPlayer.loop;
+    if (audioPlayer.loop) {
         repeatIcon.style.display = "none";
         repeat1Icon.style.display = "inline";
         repeat1Icon.style.color = "#ff9800";
@@ -175,7 +175,7 @@ repeatBtn.addEventListener("click", () => {
     }
 });
 
-audio.addEventListener('ended', () => {
+audioPlayer.addEventListener('ended', () => {
     if (index >= totalSongs - 1) {
         playIcon.style.display = "inline";
         pauseIcon.style.display = "none";
@@ -183,7 +183,7 @@ audio.addEventListener('ended', () => {
     }
     index++;
     loadSong(songsCopy[index]);
-    audio.play();
+    audioPlayer.play();
 
     removeCssClass("playing");
     addCssClass("playing");
@@ -201,7 +201,7 @@ const displayRows = (rows) => {
                     <td>${song.artist} - ${song.title}</td>
                     <td>${formatTime(song.duration)}</td>`;
 
-        if (idx === index && audio.src !== "") {
+        if (idx === index && audioPlayer.src !== "") {
             tr.classList.add("playing");
         }
 
@@ -213,7 +213,7 @@ const displayRows = (rows) => {
         tr.addEventListener("dblclick", () => {
             if (!isShuffle) index = idx;
             loadSong(song);
-            audio.play();
+            audioPlayer.play();
 
             removeCssClass("playing");
             tr.classList.add("playing");
@@ -227,48 +227,48 @@ const displayRows = (rows) => {
     dataTable.appendChild(fragment);
 }
 
-audio.addEventListener("loadedmetadata", () => {
-    currentTime.textContent = formatTime(audio.currentTime);
-    duration.textContent = formatTime(audio.duration);
-    audioCurrentTimeSlider.value = audio.currentTime;
-    audioCurrentTimeSlider.max = audio.duration; // Ajustar el máximo de la barra de progreso
+audioPlayer.addEventListener("loadedmetadata", () => {
+    currentTime.textContent = formatTime(audioPlayer.currentTime);
+    duration.textContent = formatTime(audioPlayer.duration);
+    audioCurrentTimeSlider.value = audioPlayer.currentTime;
+    audioCurrentTimeSlider.max = audioPlayer.duration; // Ajustar el máximo de la barra de progreso
 });
 
-audio.addEventListener("timeupdate", () => {
+audioPlayer.addEventListener("timeupdate", () => {
     // Current time in seconds: example => 7.897868
-    currentTime.textContent = formatTime(audio.currentTime);
-    audioCurrentTimeSlider.value = audio.currentTime;
+    currentTime.textContent = formatTime(audioPlayer.currentTime);
+    audioCurrentTimeSlider.value = audioPlayer.currentTime;
 });
 
 audioCurrentTimeSlider.addEventListener("input", () => {
-    audio.currentTime = audioCurrentTimeSlider.value;
+    audioPlayer.currentTime = audioCurrentTimeSlider.value;
 });
 
 volumeSlider.addEventListener("input", () => {
     volumeDisplay.textContent = volumeSlider.value;
-    audio.volume = volumeSlider.value / 100;
+    audioPlayer.volume = volumeSlider.value / 100;
     if (volumeSlider.value === "0") {
         volumeHighIcon.style.display = "none";
         volumeXmarkIcon.style.display = "inline";
-        audio.muted = true;
+        audioPlayer.muted = true;
         currentVolume = .5; // 50 %
     } else {
         volumeXmarkIcon.style.display = "none";
         volumeHighIcon.style.display = "inline";
-        audio.muted = false;
+        audioPlayer.muted = false;
         currentVolume = volumeSlider.value / 100; //  Values are between 0 y 100
     }
 });
 
 volumeBtn.addEventListener("click", () => {
-    audio.muted = !audio.muted;
-    if (audio.muted) {
-        audio.volume = 0;
+    audioPlayer.muted = !audioPlayer.muted;
+    if (audioPlayer.muted) {
+        audioPlayer.volume = 0;
         volumeSlider.value = 0;
         volumeHighIcon.style.display = "none";
         volumeXmarkIcon.style.display = "inline";
     } else {
-        audio.volume = currentVolume; // Values are  between 0.1 and 1, where 1 = 100 %
+        audioPlayer.volume = currentVolume; // Values are  between 0.1 and 1, where 1 = 100 %
         volumeSlider.value = currentVolume * 100; // Values are between 0 and 100
         volumeXmarkIcon.style.display = "none";
         volumeHighIcon.style.display = "inline";
