@@ -37,32 +37,32 @@ const audioPlayer = new Audio();
 // Variables
 let index = 0;
 
-const songTitle = d.querySelector("#song-title");
-const parentElementWidth = songTitle.parentElement.offsetWidth;
+const songTitle = d.getElementById("song-title");
+const parentElementOffsetWidth = songTitle.parentElement.offsetWidth;
 
-const playPauseBtn = d.querySelector("#play-pause-btn");
+const playPauseBtn = d.getElementById("play-pause-btn");
 const [playIcon, pauseIcon] = [playPauseBtn.querySelector("#play"), playPauseBtn.querySelector("#pause")];
 
-const forwardBtn = d.querySelector("#forward-btn");
+const forwardBtn = d.getElementById("forward-btn");
 
-const backwardBtn = d.querySelector("#backward-btn");
+const backwardBtn = d.getElementById("backward-btn");
 
-const shuffleBtn = d.querySelector("#shuffle-btn");
+const shuffleBtn = d.getElementById("shuffle-btn");
 let isShuffle = false;
 
-const repeatBtn = d.querySelector("#repeat-btn");
+const repeatBtn = d.getElementById("repeat-btn");
 const [repeatIcon, repeat1Icon] = [repeatBtn.querySelector("#repeat"), repeatBtn.querySelector("#repeat-1")];
 
-const dataTable = d.querySelector("#data-table");
+const dataTable = d.getElementById("data-table");
 
-const audioCurrentTimeSlider = d.querySelector("#audio-current-time-slider");
-const duration = d.querySelector("#duration");
-const currentTime = d.querySelector("#current-time");
+const audioCurrentTimeSlider = d.getElementById("audio-current-time-slider");
+const duration = d.getElementById("duration");
+const currentTime = d.getElementById("current-time");
 
-const volumeBtn = d.querySelector("#volume-btn");
+const volumeBtn = d.getElementById("volume-btn");
 const [volumeHighIcon, volumeXmarkIcon] = [volumeBtn.querySelector("#volume-high"), volumeBtn.querySelector("#volume-xmark")];
-const volumeSlider = d.querySelector("#volume-slider");
-const volumeDisplay = d.querySelector("#volume-display");
+const volumeSlider = d.getElementById("volume-slider");
+const volumeDisplay = d.getElementById("volume-display");
 let currentVolume = 1; // Volume 100 %
 
 d.addEventListener("DOMContentLoaded", () => {
@@ -74,7 +74,7 @@ const init = () => {
     loadSong(songsCopy[index]);
     // 2. Mostramos la lista de canciones
     displayRows(songsCopy);
-    // Reseteamos los valores
+    // 3. Reseteamos los valores
     volumeSlider.value = 100;
     audioCurrentTimeSlider.value = 0;
     dataTable.parentElement.scrollTop = 0;
@@ -86,7 +86,7 @@ const loadSong = song => {
     audioPlayer.load();
     songTitle.textContent = `🎵 ${song.artist} - ${song.title} 🎵`;
 
-    if (songTitle.scrollWidth > parentElementWidth) {
+    if (songTitle.scrollWidth > parentElementOffsetWidth) {
         songTitle.style.animation = "slideIn 16s linear infinite";
     } else {
         songTitle.style.animation = "none";
@@ -281,7 +281,7 @@ const removeCssClass = (cssClass) => {
     if (elt) elt.classList.remove(cssClass);
 }
 
-const container = d.querySelector("#play-list");
+const container = d.getElementById("play-list");
 const addCssClass = (cssClass) => {
     const elt = dataTable.querySelector(`tr[data-id="${songsCopy[index].id}"]`);
     if (elt) {
