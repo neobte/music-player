@@ -153,6 +153,12 @@ input[type="range"]::-moz-range-track {
     padding: 0.1rem;
 }
 
+#play-pause-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #play-pause-btn svg {
     height: 1.75em;
     width: 1.75em;
