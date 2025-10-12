@@ -156,6 +156,17 @@ input[type="range"]::-moz-range-track {
     padding: 0.1rem;
 }
 
+/* #play-pause-btn {
+    background-color: #ff9800;
+    border-radius: 50%;
+    width: 2.75em;
+    height: 2.75em;
+}
+
+#play-pause-btn:hover {
+    transform: scale(1.05);
+} */
+
 #play-pause-btn svg {
     height: 1.75em;
     width: 1.75em;
