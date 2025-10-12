@@ -18,7 +18,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.8rem;
+    gap: 1rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
@@ -154,6 +154,13 @@ input[type="range"]::-moz-range-track {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0.1rem;
+}
+
+#play-pause-btn {
+    width: 40px;
+    height: 40px;
+    background-color: #f77e00;
+    border-radius: 50%;
 }
 
 #play-pause-btn svg {
