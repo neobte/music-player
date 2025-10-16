@@ -19,8 +19,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 1.3rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 #controls span {
@@ -28,6 +28,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#controls span:active {
+    transform: scale(.95);
 }
 
 .container {
