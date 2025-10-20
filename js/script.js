@@ -25,7 +25,6 @@ const songs = [
     { id: 20, artist: "3-2 Get Funky", title: "Si ya no estas", src: "audio/salsa/3-2 Get Funky - Si ya no estas.m4a", duration: 268.608435 },
 ];
 
-
 const totalSongs = songs.length;
 // Ordenamos el listado de canciones por artista
 songs.sort((a, b) => a.artist > b.artist ? 1 : a.artist < b.artist ? -1 : 0);
@@ -46,6 +45,7 @@ const [playIcon, pauseIcon] = [playPauseBtn.querySelector("#play"), playPauseBtn
 const forwardBtn = d.getElementById("forward-btn");
 
 const backwardBtn = d.getElementById("backward-btn");
+let timeoutID, isFirstClick = true;
 
 const shuffleBtn = d.getElementById("shuffle-btn");
 let isShuffle = false;
@@ -56,7 +56,7 @@ const [repeatIcon, repeat1Icon] = [repeatBtn.querySelector("#repeat"), repeatBtn
 const dataTable = d.getElementById("data-table");
 
 const audioCurrentTimeSlider = d.getElementById("audio-current-time-slider");
-const duration = d.getElementById("duration");
+const durationTime = d.getElementById("duration-time");
 const currentTime = d.getElementById("current-time");
 
 const volumeBtn = d.getElementById("volume-btn");
@@ -123,12 +123,23 @@ forwardBtn.addEventListener("click", () => {
 });
 
 backwardBtn.addEventListener("click", () => {
-    index = (index - 1 + totalSongs) % totalSongs;
-    if (!audioPlayer.paused) {
-        loadSong(songsCopy[index]);
-        audioPlayer.play();
-    } else {
-        loadSong(songsCopy[index]);
+    clearTimeout(timeoutID);
+    if (audioPlayer.currentTime > 0 && isFirstClick) {
+        audioPlayer.currentTime = 0;
+        isFirstClick = false;
+        timeoutID = setTimeout(() => {
+            isFirstClick = true;
+        }, 1000);
+    }
+    else if (!isFirstClick || audioPlayer.currentTime === 0) {
+        index = (index - 1 + totalSongs) % totalSongs;
+        if (!audioPlayer.paused) {
+            loadSong(songsCopy[index]);
+            audioPlayer.play();
+        } else {
+            loadSong(songsCopy[index]);
+        }
+        isFirstClick = true;
     }
     removeCssClass("playing");
     addCssClass("playing");
@@ -229,7 +240,7 @@ const displayRows = (rows) => {
 
 audioPlayer.addEventListener("loadedmetadata", () => {
     currentTime.textContent = formatTime(audioPlayer.currentTime);
-    duration.textContent = formatTime(audioPlayer.duration);
+    durationTime.textContent = formatTime(audioPlayer.duration);
     audioCurrentTimeSlider.value = audioPlayer.currentTime;
     audioCurrentTimeSlider.max = audioPlayer.duration; // Ajustar el máximo de la barra de progreso
 });
