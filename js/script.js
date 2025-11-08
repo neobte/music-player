@@ -206,12 +206,12 @@ repeatBtn.addEventListener("click", () => {
         repeatIcon.style.display = "none";
         repeat1Icon.style.display = "inline";
         repeat1Icon.style.color = "#ff9800";
-        repeatBtn.title = "Desactivar repetición indefinida";
+        repeatBtn.title = "Desactivar la repetición indefinida";
     } else {
         repeatIcon.style.display = "inline";
         repeat1Icon.style.display = "none";
         repeat1Icon.style.color = "currentColor";
-        repeatBtn.title = "Activar repetición indefinida";
+        repeatBtn.title = "Repetir canción indefinidamente";
     }
 });
 
