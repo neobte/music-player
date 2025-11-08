@@ -152,7 +152,7 @@ backwardBtn.addEventListener("click", () => {
         isFirstClick = false;
         timeoutID = setTimeout(() => {
             isFirstClick = true;
-        }, 1000);
+        }, 3000);
     }
     else if (!isFirstClick || audioPlayer.currentTime === 0) {
         index = (index - 1 + totalSongs) % totalSongs;
@@ -194,10 +194,10 @@ shuffleBtn.addEventListener("click", () => {
         shuffleBtn.title = "Activar orden aleatorio";
     }
 
-    if (index > -1) {
-        removeCssClass("playing");
-        addCssClass("playing");
-    }
+    // if (index > -1) {
+    //     removeCssClass("playing");
+    //     addCssClass("playing");
+    // }
 });
 
 repeatBtn.addEventListener("click", () => {
@@ -216,12 +216,15 @@ repeatBtn.addEventListener("click", () => {
 });
 
 audioPlayer.addEventListener('ended', () => {
-    if (index >= totalSongs - 1) {
-        playIcon.style.display = "inline";
-        pauseIcon.style.display = "none";
-        return;
-    }
-    index++;
+    // if (index >= totalSongs - 1) {
+    //     playIcon.style.display = "inline";
+    //     pauseIcon.style.display = "none";
+    //     return;
+    // }
+    // index++;
+
+    // Configuramos la repetición indefinida de forma predeterminada
+    index = (index + 1) % totalSongs;
     loadSong(songListCopy[index]);
     audioPlayer.play();
 
