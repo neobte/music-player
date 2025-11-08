@@ -33,18 +33,17 @@ const d = document;
 
 let URL = `https://neobte.github.io/music-app/audio/salsa/playlist.json`;
 
-let songList, songListCopy, totalSongs;
+// Variables
+let songList, songListCopy, totalSongs, songIndex = 0;
 
 const audioPlayer = new Audio();
-
-// Variables
-let index = 0;
 
 const songTitle = d.getElementById("song-title");
 const parentElementOffsetWidth = songTitle.parentElement.offsetWidth;
 
 const playPauseBtn = d.getElementById("play-pause-btn");
-const [playIcon, pauseIcon] = [playPauseBtn.querySelector("#play"), playPauseBtn.querySelector("#pause")];
+const [playIcon, pauseIcon] = playPauseBtn.children;
+// const [playIcon, pauseIcon] = [playPauseBtn.querySelector("#play"), playPauseBtn.querySelector("#pause")];
 
 const forwardBtn = d.getElementById("forward-btn");
 
@@ -55,16 +54,17 @@ const shuffleBtn = d.getElementById("shuffle-btn");
 let isShuffle = false;
 
 const repeatBtn = d.getElementById("repeat-btn");
-const [repeatIcon, repeat1Icon] = [repeatBtn.querySelector("#repeat"), repeatBtn.querySelector("#repeat-1")];
+const [repeatIcon, repeat1Icon] = repeatBtn.children;
 
 const dataTable = d.getElementById("data-table");
+const dtContainer = dataTable.parentElement;
 
 const audioCurrentTimeSlider = d.getElementById("audio-current-time-slider");
 const durationTime = d.getElementById("duration-time");
 const currentTime = d.getElementById("current-time");
 
 const volumeBtn = d.getElementById("volume-btn");
-const [volumeHighIcon, volumeXmarkIcon] = [volumeBtn.querySelector("#volume-high"), volumeBtn.querySelector("#volume-xmark")];
+const [volumeHighIcon, volumeXmarkIcon] = volumeBtn.children;
 const volumeSlider = d.getElementById("volume-slider");
 const volumeDisplay = d.getElementById("volume-display");
 let currentVolume = 1; // Volume 100 %
@@ -91,12 +91,13 @@ const handleResponse = response => {
 
     totalSongs = songListCopy.length;
 
-    if (index < totalSongs) {
+    // ¿Podemos eliminar esta condición?
+    if (songIndex < totalSongs) {
         // 1. Cargamos el indice cero
-        loadSong(songListCopy[index]);
+        loadSong(songListCopy[songIndex]);
+        // 2. Mostramos la lista de canciones
+        displayRows(songListCopy);
     }
-    // 2. Mostramos la lista de canciones
-    displayRows(songListCopy);
 }
 
 const loadSong = song => {
@@ -107,6 +108,7 @@ const loadSong = song => {
     const [artist, title] = song.name.slice(0, song.name.lastIndexOf('.')).split(" - ");
     songTitle.textContent = `🎵 ${artist} - ${title} 🎵`;
 
+    // Se podria utilizar el operador ternario
     if (songTitle.scrollWidth > parentElementOffsetWidth) {
         songTitle.style.animation = "slideIn 16s linear infinite";
     } else {
@@ -120,26 +122,31 @@ const loadSong = song => {
 
 playPauseBtn.addEventListener("click", () => {
     if (audioPlayer.src === "") return;
-    if (audioPlayer.paused) {
-        audioPlayer.play();
-        playIcon.style.display = "none";
-        pauseIcon.style.display = "inline";
-        playPauseBtn.title = "Pausar";
-    } else {
-        audioPlayer.pause();
-        playIcon.style.display = "inline";
-        pauseIcon.style.display = "none";
-        playPauseBtn.title = "Reproducir";
-    }
+    audioPlayer.paused ? playAudio() : pauseAudio();
 });
 
+const pauseAudio = () => {
+    audioPlayer.pause();
+    playIcon.style.display = "inline";
+    pauseIcon.style.display = "none";
+    playPauseBtn.title = "Reproducir";
+}
+
+const playAudio = () => {
+    audioPlayer.play();
+    playIcon.style.display = "none";
+    pauseIcon.style.display = "inline";
+    playPauseBtn.title = "Pausar";
+}
+
 forwardBtn.addEventListener("click", () => {
-    index = (index + 1) % totalSongs;
+    songIndex = (songIndex + 1) % totalSongs;
+    // loadSong(songListCopy[songIndex]); Si cargo esta linea la variable paused será true, por lo tanto el método play no se ejecutará
     if (!audioPlayer.paused) {
-        loadSong(songListCopy[index]);
+        loadSong(songListCopy[songIndex]);
         audioPlayer.play();
     } else {
-        loadSong(songListCopy[index]);
+        loadSong(songListCopy[songIndex]);
     }
     removeCssClass("playing");
     addCssClass("playing");
@@ -155,12 +162,12 @@ backwardBtn.addEventListener("click", () => {
         }, 3000);
     }
     else if (!isFirstClick || audioPlayer.currentTime === 0) {
-        index = (index - 1 + totalSongs) % totalSongs;
+        songIndex = (songIndex - 1 + totalSongs) % totalSongs;
         if (!audioPlayer.paused) {
-            loadSong(songListCopy[index]);
+            loadSong(songListCopy[songIndex]);
             audioPlayer.play();
         } else {
-            loadSong(songListCopy[index]);
+            loadSong(songListCopy[songIndex]);
         }
         isFirstClick = true;
     }
@@ -182,50 +189,37 @@ shuffleBtn.addEventListener("click", () => {
         // Enviamos al principio la canción que esta actualmente en reproducción despues de la mezcla
         songListCopy.unshift(currentlyPlayingSong);
         // Seteamos el indice a cero correspondiente a la canción actualmente en reproduccion
-        index = 0;
+        songIndex = 0;
 
         shuffleBtn.title = "Desactivar orden aleatorio";
     } else {
         // Buscamos el índice en el array original
-        index = songList.findIndex(song => song.id == audioPlayer.dataset['songId']);
+        songIndex = songList.findIndex(song => song.id == audioPlayer.dataset['songId']);
         // Devolvemos el orden del array original
         songListCopy = [...songList];
 
         shuffleBtn.title = "Activar orden aleatorio";
     }
-
-    // if (index > -1) {
-    //     removeCssClass("playing");
-    //     addCssClass("playing");
-    // }
 });
 
 repeatBtn.addEventListener("click", () => {
     audioPlayer.loop = !audioPlayer.loop;
     if (audioPlayer.loop) {
         repeatIcon.style.display = "none";
-        repeat1Icon.style.display = "inline";
-        repeat1Icon.style.color = "#ff9800";
+        repeat1Icon.style.cssText = "display: inline;color: #ff9800;";
         repeatBtn.title = "Desactivar la repetición indefinida";
     } else {
         repeatIcon.style.display = "inline";
-        repeat1Icon.style.display = "none";
-        repeat1Icon.style.color = "currentColor";
+        repeat1Icon.style.cssText = "display: none; color: currentColor;";
         repeatBtn.title = "Repetir canción indefinidamente";
     }
 });
 
 audioPlayer.addEventListener('ended', () => {
-    // if (index >= totalSongs - 1) {
-    //     playIcon.style.display = "inline";
-    //     pauseIcon.style.display = "none";
-    //     return;
-    // }
-    // index++;
-
-    // Configuramos la repetición indefinida de forma predeterminada
-    index = (index + 1) % totalSongs;
-    loadSong(songListCopy[index]);
+    // Configuramos la repetición indefinida de la playlist de forma predeterminada
+    // De esta forma no hace falta setear los iconos play o pause
+    songIndex = (songIndex + 1) % totalSongs;
+    loadSong(songListCopy[songIndex]);
     audioPlayer.play();
 
     removeCssClass("playing");
@@ -240,11 +234,9 @@ const displayRows = (rows) => {
         tr.dataset.id = song.id;
         // Create table cells (td) for each song property
         tr.innerHTML = `
-                    <td>${idx + 1}.</td>
-                    <td>${removeExtension(song.name)}</td>
-                    <td>${formatTime(song.duration)}</td>`;
+            <td>${idx + 1}.</td><td>${removeExtension(song.name)}</td><td>${formatTime(song.duration)}</td>`;
 
-        if (idx === index && audioPlayer.src !== "") {
+        if (idx === songIndex && audioPlayer.src !== "") {
             tr.classList.add("playing");
         }
 
@@ -254,19 +246,13 @@ const displayRows = (rows) => {
         });
 
         tr.addEventListener("dblclick", () => {
-            if (!isShuffle) index = idx;
+            if (!isShuffle) songIndex = idx;
             loadSong(song);
-            audioPlayer.play();
+            playAudio();
 
             removeCssClass("playing");
             tr.classList.add("playing");
-
-            playIcon.style.display = "none";
-            pauseIcon.style.display = "inline";
-
-            playPauseBtn.title = "Pausar";
         });
-
         fragment.appendChild(tr);
     });
     dataTable.appendChild(fragment);
@@ -326,17 +312,17 @@ const removeCssClass = (cssClass) => {
     if (elt) elt.classList.remove(cssClass);
 }
 
-const container = d.getElementById("play-list");
 const addCssClass = (cssClass) => {
-    const elt = dataTable.querySelector(`tr[data-id="${songListCopy[index].id}"]`);
+    const elt = dataTable.querySelector(`tr[data-id="${songListCopy[songIndex].id}"]`);
     if (elt) {
         elt.classList.add(cssClass);
-        container.scrollTop = elt.offsetTop - (container.clientHeight / 2) + (elt.offsetHeight / 2);
+        dtContainer.scrollTop = elt.offsetTop - (dtContainer.clientHeight / 2) + (elt.offsetHeight / 2);
     }
 }
 
 // https://introcs.cs.princeton.edu/java/14array/Deck.java.html
 const shuffle = arr => {
+    // ¿Podemos utilizar totalSongs?
     const len = arr.length;
     for (let i = 0; i < len; i++) {
         const r = i + parseInt(Math.random() * (len - i));
