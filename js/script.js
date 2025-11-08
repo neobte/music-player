@@ -124,10 +124,12 @@ playPauseBtn.addEventListener("click", () => {
         audioPlayer.play();
         playIcon.style.display = "none";
         pauseIcon.style.display = "inline";
+        playPauseBtn.title = "Pausar";
     } else {
         audioPlayer.pause();
         playIcon.style.display = "inline";
         pauseIcon.style.display = "none";
+        playPauseBtn.title = "Reproducir";
     }
 });
 
@@ -181,11 +183,15 @@ shuffleBtn.addEventListener("click", () => {
         songListCopy.unshift(currentlyPlayingSong);
         // Seteamos el indice a cero correspondiente a la canción actualmente en reproduccion
         index = 0;
+
+        shuffleBtn.title = "Desactivar orden aleatorio";
     } else {
         // Buscamos el índice en el array original
         index = songList.findIndex(song => song.id == audioPlayer.dataset['songId']);
         // Devolvemos el orden del array original
         songListCopy = [...songList];
+
+        shuffleBtn.title = "Activar orden aleatorio";
     }
 
     if (index > -1) {
@@ -200,10 +206,12 @@ repeatBtn.addEventListener("click", () => {
         repeatIcon.style.display = "none";
         repeat1Icon.style.display = "inline";
         repeat1Icon.style.color = "#ff9800";
+        repeatBtn.title = "Desactivar repetición indefinida";
     } else {
         repeatIcon.style.display = "inline";
         repeat1Icon.style.display = "none";
         repeat1Icon.style.color = "currentColor";
+        repeatBtn.title = "Activar repetición indefinida";
     }
 });
 
@@ -252,6 +260,8 @@ const displayRows = (rows) => {
 
             playIcon.style.display = "none";
             pauseIcon.style.display = "inline";
+
+            playPauseBtn.title = "Pausar";
         });
 
         fragment.appendChild(tr);
