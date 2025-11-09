@@ -125,20 +125,6 @@ playPauseBtn.addEventListener("click", () => {
     audioPlayer.paused ? playAudio() : pauseAudio();
 });
 
-const pauseAudio = () => {
-    audioPlayer.pause();
-    playIcon.style.display = "inline";
-    pauseIcon.style.display = "none";
-    playPauseBtn.title = "Reproducir";
-}
-
-const playAudio = () => {
-    audioPlayer.play();
-    playIcon.style.display = "none";
-    pauseIcon.style.display = "inline";
-    playPauseBtn.title = "Pausar";
-}
-
 forwardBtn.addEventListener("click", () => {
     songIndex = (songIndex + 1) % totalSongs;
     // loadSong(songListCopy[songIndex]); Si cargo esta linea la variable paused será true, por lo tanto el método play no se ejecutará
@@ -180,24 +166,10 @@ shuffleBtn.addEventListener("click", () => {
     // Cambiamos el color al elemento span, no al SVG
     shuffleBtn.style.color = isShuffle ? "#ff9800" : "currentColor";
     if (isShuffle) {
-        // Encuentra el elemento pero no lo elimina del arreglo
-        // const element = songListCopy .find(song => song.id == audioPlayer.dataset["songId"]);
-        // Encuentra el elemento y lo extrae del arreglo
-        const currentlyPlayingSong = songListCopy.splice(songListCopy.findIndex(song => song.id == audioPlayer.dataset['songId']), 1)[0];
-        // Barajamos el arreglo sin la cancion actualmente en reproduccion
-        songListCopy = shuffle(songListCopy);
-        // Enviamos al principio la canción que esta actualmente en reproducción despues de la mezcla
-        songListCopy.unshift(currentlyPlayingSong);
-        // Seteamos el indice a cero correspondiente a la canción actualmente en reproduccion
-        songIndex = 0;
-
+        shufflePlaylist(songListCopy);
         shuffleBtn.title = "Desactivar orden aleatorio";
     } else {
-        // Buscamos el índice en el array original
-        songIndex = songList.findIndex(song => song.id == audioPlayer.dataset['songId']);
-        // Devolvemos el orden del array original
-        songListCopy = [...songList];
-
+        sequencePlaylist(songList);
         shuffleBtn.title = "Activar orden aleatorio";
     }
 });
@@ -225,38 +197,6 @@ audioPlayer.addEventListener('ended', () => {
     removeCssClass("playing");
     addCssClass("playing");
 });
-
-const displayRows = (rows) => {
-    dataTable.textContent = "";
-    const fragment = d.createDocumentFragment();
-    rows.forEach((song, idx) => {
-        const tr = d.createElement('tr');
-        tr.dataset.id = song.id;
-        // Create table cells (td) for each song property
-        tr.innerHTML = `
-            <td>${idx + 1}.</td><td>${removeExtension(song.name)}</td><td>${formatTime(song.duration)}</td>`;
-
-        if (idx === songIndex && audioPlayer.src !== "") {
-            tr.classList.add("playing");
-        }
-
-        tr.addEventListener('click', () => {
-            removeCssClass("selected");
-            tr.classList.add("selected");
-        });
-
-        tr.addEventListener("dblclick", () => {
-            if (!isShuffle) songIndex = idx;
-            loadSong(song);
-            playAudio();
-
-            removeCssClass("playing");
-            tr.classList.add("playing");
-        });
-        fragment.appendChild(tr);
-    });
-    dataTable.appendChild(fragment);
-}
 
 audioPlayer.addEventListener("loadedmetadata", () => {
     currentTime.textContent = formatTime(audioPlayer.currentTime);
@@ -307,12 +247,58 @@ volumeBtn.addEventListener("click", () => {
     volumeDisplay.textContent = volumeSlider.value;
 });
 
-const removeCssClass = (cssClass) => {
+const displayRows = rows => {
+    dataTable.textContent = "";
+    const fragment = d.createDocumentFragment();
+    rows.forEach((song, idx) => {
+        const tr = d.createElement('tr');
+        tr.dataset.id = song.id;
+        // Create table cells (td) for each song property
+        tr.innerHTML = `
+            <td>${idx + 1}.</td><td>${removeExtension(song.name)}</td><td>${formatTime(song.duration)}</td>`;
+
+        if (idx === songIndex && audioPlayer.src !== "") {
+            tr.classList.add("playing");
+        }
+
+        tr.addEventListener('click', () => {
+            removeCssClass("selected");
+            tr.classList.add("selected");
+        });
+
+        tr.addEventListener("dblclick", () => {
+            if (!isShuffle) songIndex = idx;
+            loadSong(song);
+            playAudio();
+
+            removeCssClass("playing");
+            tr.classList.add("playing");
+        });
+        fragment.appendChild(tr);
+    });
+    dataTable.appendChild(fragment);
+}
+
+const pauseAudio = () => {
+    audioPlayer.pause();
+    playIcon.style.display = "inline";
+    pauseIcon.style.display = "none";
+    playPauseBtn.title = "Reproducir";
+}
+
+const playAudio = () => {
+    audioPlayer.play();
+    playIcon.style.display = "none";
+    pauseIcon.style.display = "inline";
+    playPauseBtn.title = "Pausar";
+}
+
+const removeCssClass = cssClass => {
     const elt = dataTable.querySelector(`tr.${cssClass}`);
     if (elt) elt.classList.remove(cssClass);
 }
 
-const addCssClass = (cssClass) => {
+const addCssClass = cssClass => {
     const elt = dataTable.querySelector(`tr[data-id="${songListCopy[songIndex].id}"]`);
     if (elt) {
         elt.classList.add(cssClass);
@@ -320,19 +306,8 @@ const addCssClass = (cssClass) => {
     }
 }
 
-// https://introcs.cs.princeton.edu/java/14array/Deck.java.html
-const shuffle = arr => {
-    // ¿Podemos utilizar totalSongs?
-    const len = arr.length;
-    for (let i = 0; i < len; i++) {
-        const r = i + parseInt(Math.random() * (len - i));
-        [arr[i], arr[r]] = [arr[r], arr[i]];
-    }
-    return arr;
-}
-
 // Format time in hh:mm:ss or mm:ss
-const formatTime = (seconds) => {
+const formatTime = seconds => {
     seconds = Math.round(seconds); // 287.370158
     const hours = (seconds / 3600) | 0;  // Hours calculation
     const minutes = ((seconds % 3600) / 60) | 0;  // Minutes calculation
@@ -351,6 +326,37 @@ const getRandomHexColor = (max = 256) => {
         ((Math.random() * max) | 0).toString(16).padStart(2, '0') +
         ((Math.random() * max) | 0).toString(16).padStart(2, '0') +
         ((Math.random() * max) | 0).toString(16).padStart(2, '0');
+}
+
+const sequencePlaylist = songList => {
+    // Buscamos el índice
+    songIndex = songList.findIndex(song => song.id == audioPlayer.dataset['songId']);
+    // Devolvemos el orden del array original
+    songListCopy = [...songList];
+}
+
+const shufflePlaylist = songListCopy => {
+    // Encuentra el elemento pero no lo elimina del arreglo
+    // const element = songListCopy .find(song => song.id == audioPlayer.dataset["songId"]);
+    // Encuentra el elemento y lo extrae del arreglo
+    const currentlyPlayingSong = songListCopy.splice(songListCopy.findIndex(song => song.id == audioPlayer.dataset['songId']), 1)[0];
+    // Barajamos el arreglo sin la cancion actualmente en reproduccion
+    songListCopy = shuffle(songListCopy);
+    // Enviamos al principio la canción que esta actualmente en reproducción despues de la mezcla
+    songListCopy.unshift(currentlyPlayingSong);
+    // Seteamos el indice a cero correspondiente a la canción actualmente en reproduccion
+    songIndex = 0;
+}
+
+// https://introcs.cs.princeton.edu/java/14array/Deck.java.html
+const shuffle = arr => {
+    // ¿Podemos utilizar totalSongs?
+    const len = arr.length;
+    for (let i = 0; i < len; i++) {
+        const r = i + parseInt(Math.random() * (len - i));
+        [arr[i], arr[r]] = [arr[r], arr[i]];
+    }
+    return arr;
 }
 
 // Send request
