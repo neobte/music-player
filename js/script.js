@@ -55,6 +55,7 @@ let isShuffle = false;
 
 const repeatBtn = d.getElementById("repeat-btn");
 const [repeatIcon, repeat1Icon] = repeatBtn.children;
+let isRepeatAll = false, repeatState = 0;
 
 const dataTable = d.getElementById("data-table");
 const dtContainer = dataTable.parentElement;
@@ -85,6 +86,7 @@ const init = () => {
 
 const handleResponse = response => {
 
+    // songList = JSON.parse(response).slice(0, 5);
     songList = JSON.parse(response);
 
     songListCopy = [...songList];
@@ -166,30 +168,63 @@ shuffleBtn.addEventListener("click", () => {
     // Cambiamos el color al elemento span, no al SVG
     shuffleBtn.style.color = isShuffle ? "#ff9800" : "currentColor";
     if (isShuffle) {
+        shuffleBtn.children[0].querySelector("rect").style.display = "block";
         shufflePlaylist(songListCopy);
+        // console.log(songListCopy);
         shuffleBtn.title = "Desactivar orden aleatorio";
     } else {
+        shuffleBtn.children[0].querySelector("rect").style.display = "none";
         sequencePlaylist(songList);
         shuffleBtn.title = "Activar orden aleatorio";
     }
 });
 
 repeatBtn.addEventListener("click", () => {
-    audioPlayer.loop = !audioPlayer.loop;
-    if (audioPlayer.loop) {
-        repeatIcon.style.display = "none";
-        repeat1Icon.style.cssText = "display: inline;color: #ff9800;";
-        repeatBtn.title = "Desactivar la repetición indefinida";
-    } else {
-        repeatIcon.style.display = "inline";
-        repeat1Icon.style.cssText = "display: none; color: currentColor;";
+    repeatState = (repeatState + 1) % 3;
+
+    if (repeatState === 0) {
+        audioPlayer.loop = false;
+        repeatBtn.title = "Repetir playlist";
+        repeatBtn.children[1].style.display = "none";
+        repeatBtn.children[0].style.display = "block";
+        repeatBtn.style.color = "currentColor";
+        return;
+    }
+
+    if (repeatState === 1) {
+        isRepeatAll = true;
         repeatBtn.title = "Repetir canción indefinidamente";
+        repeatBtn.children[0].querySelector("rect").style.display = "block";
+        repeatBtn.style.color = "#ff9800";
+        return;
+    }
+
+    if (repeatState === 2) {
+        isRepeatAll = false;
+        audioPlayer.loop = true;
+        repeatBtn.title = "Desactivar la repetición indefinida";
+        repeatBtn.children[0].querySelector("rect").style.display = "none";
+        repeatBtn.children[0].style.display = "none";
+        repeatBtn.children[1].style.display = "block";
+        return;
     }
 });
 
 audioPlayer.addEventListener('ended', () => {
-    // Configuramos la repetición indefinida de la playlist de forma predeterminada
-    // De esta forma no hace falta setear los iconos play o pause
+
+    if (songIndex >= totalSongs - 1 && !isRepeatAll) {
+        playIcon.style.display = "block";
+        pauseIcon.style.display = "none";
+        playPauseBtn.title = "Reproducir";
+        return;
+    }
+
+    if (songIndex === totalSongs - 1) {
+        shufflePlaylist(songListCopy);
+        // console.log(songListCopy);
+        // songIndex = -1;
+    }
+
     songIndex = (songIndex + 1) % totalSongs;
     loadSong(songListCopy[songIndex]);
     audioPlayer.play();

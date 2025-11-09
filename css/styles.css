@@ -26,6 +26,7 @@ body {
     gap: 1.3rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    font-size: 1rem;
 }
 
 #controls span {
@@ -45,6 +46,8 @@ body {
     padding: 1rem;
     margin: auto;
     user-select: none;
+    /* box-shadow: 0 0 1rem rgb(222, 226, 230, .5);
+    border-radius: 1rem; */
 }
 
 #song-title-container {
@@ -229,4 +232,12 @@ input[type="range"]::-moz-range-track {
 
 .space-between {
     justify-content: space-between;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
 }
