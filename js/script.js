@@ -89,6 +89,8 @@ const handleResponse = response => {
     // songList = JSON.parse(response).slice(0, 5);
     songList = JSON.parse(response);
 
+    console.log(getPlaylistDuration(songList));
+
     songListCopy = [...songList];
 
     totalSongs = songListCopy.length;
@@ -219,10 +221,10 @@ audioPlayer.addEventListener('ended', () => {
         return;
     }
 
-    if (songIndex === totalSongs - 1) {
+    if (songIndex === totalSongs - 1 && isShuffle) {
+        // La función shufflePlaylist setea el songIndex = 0
         shufflePlaylist(songListCopy);
         // console.log(songListCopy);
-        // songIndex = -1;
     }
 
     songIndex = (songIndex + 1) % totalSongs;
@@ -342,17 +344,25 @@ const addCssClass = cssClass => {
 }
 
 // Format time in hh:mm:ss or mm:ss
-const formatTime = seconds => {
+const formatTime = (seconds, format = 0) => {
     seconds = Math.round(seconds); // 287.370158
     const hours = (seconds / 3600) | 0;  // Hours calculation
     const minutes = ((seconds % 3600) / 60) | 0;  // Minutes calculation
     const remainingSeconds = (seconds % 60);  // Whole seconds
 
+    if (format === 0) {
+        return hours > 0
+            // Show hours:minutes:seconds format
+            ? `${hours}:${/*minutes < 10 ? '0' + minutes : */minutes}:${remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds}`
+            // Show minutes:seconds format
+            : `${/*minutes < 10 ? '0' + minutes :*/ minutes}:${remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds}`;
+    }
+
     return hours > 0
         // Show hours:minutes:seconds format
-        ? `${hours}:${/*minutes < 10 ? '0' + minutes : */minutes}:${remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds}`
+        ? `${hours} h ${minutes} min ${remainingSeconds} s`
         // Show minutes:seconds format
-        : `${/*minutes < 10 ? '0' + minutes :*/ minutes}:${remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds}`;
+        : `${minutes} min ${remainingSeconds} s`;
 }
 
 const getRandomHexColor = (max = 256) => {
@@ -425,4 +435,12 @@ function sendHttpRequest(method, url, data, callback) {
 const removeExtension = name => {
     // return name.slice(0, name.lastIndexOf("."));
     return name.split(".")[0];
+}
+
+const getPlaylistDuration = songList => {
+    let totalSeconds = 0, len = songList.length;
+    for (let i = 0; i < len; i++) {
+        totalSeconds += songList[i].duration;
+    }
+    return formatTime(totalSeconds, 1);
 }
