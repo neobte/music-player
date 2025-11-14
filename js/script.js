@@ -31,7 +31,7 @@ const d = document;
 
 // let songListCopy = [...songList];
 
-let URL = `https://neobte.github.io/music-app/audio/salsa/playlist.json`;
+let URL = `https://neobte.github.io/music-player/audio/salsa/playlist.json`;
 
 // Variables
 let songList, songListCopy, totalSongs, songIndex = 0;
@@ -105,7 +105,7 @@ const handleResponse = response => {
 }
 
 const loadSong = song => {
-    audioPlayer.src = `https://neobte.github.io/music-app/audio/salsa/${song.name}`;
+    audioPlayer.src = `https://neobte.github.io/music-player/audio/salsa/${song.name}`;
     audioPlayer.dataset.songId = song.id;
     audioPlayer.load();
 
