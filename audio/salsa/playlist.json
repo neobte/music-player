@@ -1,0 +1,807 @@
+[
+  {
+    "id": 1,
+    "name": "3-2 Get Funky - Si ya no estás.m4a",
+    "duration": 268.608435,
+    "size": 4347893,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 2,
+    "name": "Amilcar Boscan - Faltaba una razón.m4a",
+    "duration": 268.283356,
+    "size": 4342545,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 3,
+    "name": "Antonio Cartagena - Necesito un amor.m4a",
+    "duration": 245.59746,
+    "size": 3975522,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 4,
+    "name": "Antonio Cartagena - Si tú no estás.m4a",
+    "duration": 293.98204,
+    "size": 4760239,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 5,
+    "name": "Antonio Cartagena - Sin ti.m4a",
+    "duration": 325.032925,
+    "size": 5261124,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 6,
+    "name": "Bobby Valentín - La boda de ella.m4a",
+    "duration": 326.4,
+    "size": 5285409,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 7,
+    "name": "Conjunto Clásico - Señora ley.m4a",
+    "duration": 252.066666,
+    "size": 4081743,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 8,
+    "name": "Dan Den - Torbellino de amor.m4a",
+    "duration": 307.959375,
+    "size": 4927606,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 9,
+    "name": "David Pabón - Aquel viejo motel.m4a",
+    "duration": 308.866666,
+    "size": 5001907,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 10,
+    "name": "Dimensión Latina - Por tu proceder.m4a",
+    "duration": 277.791927,
+    "size": 4498922,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 11,
+    "name": "Eddie Santiago - Antídoto y veneno.m4a",
+    "duration": 318.453333,
+    "size": 5156953,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 12,
+    "name": "El Gran Combo - Amame.m4a",
+    "duration": 323.036009,
+    "size": 5230206,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 13,
+    "name": "El Gran Combo - Falsaria.m4a",
+    "duration": 304.773333,
+    "size": 4935021,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 14,
+    "name": "El Gran Combo - Regresa ya.m4a",
+    "duration": 256.835918,
+    "size": 4159424,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 15,
+    "name": "El Gran Combo - Trampolín.m4a",
+    "duration": 261.893333,
+    "size": 4240555,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 16,
+    "name": "El Gran Combo - Y no hago más na.m4a",
+    "duration": 298.68,
+    "size": 4836811,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 17,
+    "name": "Fania All stars - Quitate tú.m4a",
+    "duration": 1003.636099,
+    "size": 16243540,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 18,
+    "name": "Frankie Ruiz - Quiero llenarte.m4a",
+    "duration": 273.066666,
+    "size": 4421500,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 19,
+    "name": "Frankie Ruiz - Si te entregas a mi.m4a",
+    "duration": 298.44,
+    "size": 4833373,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 20,
+    "name": "Frankie Ruiz - Tú con el.m4a",
+    "duration": 303.508027,
+    "size": 4914147,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 21,
+    "name": "Frankie Ruiz - Y no puedo.m4a",
+    "duration": 273.32,
+    "size": 4425879,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 22,
+    "name": "Fruko y Sus Tesos - El preso.m4a",
+    "duration": 291.535646,
+    "size": 4720318,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 23,
+    "name": "Giro López - Amor lunático.m4a",
+    "duration": 241.116009,
+    "size": 3903047,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 24,
+    "name": "Grupo Niche - Ana Milé.m4a",
+    "duration": 338.373333,
+    "size": 5479373,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 25,
+    "name": "Grupo Niche - Entrega.m4a",
+    "duration": 337.037641,
+    "size": 5455361,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 26,
+    "name": "Grupo Niche - Me sabe a Perú.m4a",
+    "duration": 259.482993,
+    "size": 4200198,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 27,
+    "name": "Grupo Niche - Mecánico.m4a",
+    "duration": 309.746666,
+    "size": 5014725,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 28,
+    "name": "Grupo Niche - Mujer de novela.m4a",
+    "duration": 315.6,
+    "size": 5110364,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 29,
+    "name": "Grupo Niche - No cabe duda.m4a",
+    "duration": 352.555438,
+    "size": 5645239,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 30,
+    "name": "Grupo Niche - Nuestro sueño.m4a",
+    "duration": 359.226666,
+    "size": 5817124,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 31,
+    "name": "Grupo Niche - Se pareció tanto a ti.m4a",
+    "duration": 328.492698,
+    "size": 5317358,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 32,
+    "name": "Grupo Niche - Te enseñare a olvidar.m4a",
+    "duration": 338.105759,
+    "size": 5472544,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 33,
+    "name": "Hansel Camacho - Tú fidelidad.m4a",
+    "duration": 305.133424,
+    "size": 4939509,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 34,
+    "name": "Héctor Lavoe - Ausencia.m4a",
+    "duration": 306.68916,
+    "size": 4964118,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 35,
+    "name": "Héctor Lavoe - Che che colé.m4a",
+    "duration": 213.495941,
+    "size": 3457566,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 36,
+    "name": "Héctor Lavoe - De que tamaño es tu amor.m4a",
+    "duration": 213.437823,
+    "size": 3454989,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 37,
+    "name": "Héctor Lavoe - Dejala que siga.m4a",
+    "duration": 387.657142,
+    "size": 6274482,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 38,
+    "name": "Héctor Lavoe - El cantante.m4a",
+    "duration": 626.938775,
+    "size": 10146992,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 39,
+    "name": "Héctor Lavoe - El todo poderoso.m4a",
+    "duration": 262.68,
+    "size": 4253666,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 40,
+    "name": "Héctor Lavoe - Ella mintió.m4a",
+    "duration": 286,
+    "size": 4631552,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 41,
+    "name": "Héctor Lavoe - Periodico de ayer.m4a",
+    "duration": 409.1356,
+    "size": 6622069,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 42,
+    "name": "Héctor Lavoe - Rompe saraguey.m4a",
+    "duration": 390.652517,
+    "size": 6323040,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 43,
+    "name": "Héctor Lavoe - Siento.m4a",
+    "duration": 390.629297,
+    "size": 6322776,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 44,
+    "name": "Héctor Lavoe - Sóngoro cosongo.m4a",
+    "duration": 470.320181,
+    "size": 7612374,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 45,
+    "name": "Héctor Lavoe - Soñando despierto.m4a",
+    "duration": 243,
+    "size": 3934950,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 46,
+    "name": "Héctor Lavoe y Willie Colón - Calle luna, calle sol.mp3",
+    "duration": 225.452,
+    "size": 3607232,
+    "type": "audio/mpeg"
+  },
+  {
+    "id": 47,
+    "name": "Ismael Miranda - Abran paso.m4a",
+    "duration": 210.92,
+    "size": 3415531,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 48,
+    "name": "Ismael Miranda - Así se compone un son.m4a",
+    "duration": 336.48,
+    "size": 5448343,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 49,
+    "name": "Ismael Miranda - Galera tres.m4a",
+    "duration": 364.413333,
+    "size": 5900002,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 50,
+    "name": "Ismael Rivera - Incomprendido.m4a",
+    "duration": 176.88,
+    "size": 2865579,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 51,
+    "name": "Johnny Rivera - Necesito una amiga.m4a",
+    "duration": 313.748027,
+    "size": 5078483,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 52,
+    "name": "Johnny Rivera - Por eso está conmigo.m4a",
+    "duration": 278.639455,
+    "size": 4510465,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 53,
+    "name": "Johnny Rojas - Adicto a ti.m4a",
+    "duration": 326.008117,
+    "size": 4102383,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 54,
+    "name": "Jose Alberto el Canario - Que muera el amor.m4a",
+    "duration": 313.608707,
+    "size": 5076786,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 55,
+    "name": "Justo Betancourt - Pa' bravo yo.m4a",
+    "duration": 224.826666,
+    "size": 3641259,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 56,
+    "name": "La Misma Gente - Llegaste tú.m4a",
+    "duration": 266.631836,
+    "size": 4318315,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 57,
+    "name": "La Misma Gente - Llégo el final.m4a",
+    "duration": 343.562448,
+    "size": 5562791,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 58,
+    "name": "La Misma Gente - Tú y yo.m4a",
+    "duration": 286.32,
+    "size": 4636602,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 59,
+    "name": "Lalo Rodriguez - Ven devórame otra vez.m4a",
+    "duration": 307.617959,
+    "size": 4981798,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 60,
+    "name": "Larry Harlow - La cartera.m4a",
+    "duration": 386.853333,
+    "size": 6263410,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 61,
+    "name": "Los Hermanos Moreno - No hay motivo.m4a",
+    "duration": 304.953469,
+    "size": 4937677,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 62,
+    "name": "Los Hermanos Moreno - Por alguien como tú.m4a",
+    "duration": 215.073174,
+    "size": 2732078,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 63,
+    "name": "Los Hermanos Moreno - Un hombre busca una mujer.m4a",
+    "duration": 298.788571,
+    "size": 4838800,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 64,
+    "name": "Los Titanes - Compárame.m4a",
+    "duration": 263.399999,
+    "size": 4265552,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 65,
+    "name": "Los Titanes - Diré que te amo.m4a",
+    "duration": 266.183129,
+    "size": 4310766,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 66,
+    "name": "Los Titanes - Sobredosis.m4a",
+    "duration": 249.878639,
+    "size": 4045568,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 67,
+    "name": "Luis Enrique - Lo que pasó entre tú y yo pasó.m4a",
+    "duration": 280.589931,
+    "size": 4541802,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 68,
+    "name": "Luis Enrique - Mi mundo.m4a",
+    "duration": 283.733333,
+    "size": 4594375,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 69,
+    "name": "Luis Enrique - Tú no le amas le temes.m4a",
+    "duration": 269.722993,
+    "size": 4365943,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 70,
+    "name": "Luis Enrique, Hansel y Raúl - Ella.m4a",
+    "duration": 348.6,
+    "size": 5645088,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 71,
+    "name": "Mickey Taveras - A pesar del tiempo.m4a",
+    "duration": 295.626666,
+    "size": 4787185,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 72,
+    "name": "Nino Segarra - Como amigos si, como amantes no.m4a",
+    "duration": 293.24,
+    "size": 4748288,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 73,
+    "name": "Nino Segarra - Entre la espada y la pared.m4a",
+    "duration": 344.373333,
+    "size": 5575998,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 74,
+    "name": "Nino Segarra - Porque te amo.m4a",
+    "duration": 306.96,
+    "size": 4971016,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 75,
+    "name": "Orquesta Harlow - El paso de Encarnación.m4a",
+    "duration": 314.96,
+    "size": 5099646,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 76,
+    "name": "Orquesta Inmensidad - Ay que amor.m4a",
+    "duration": 234.053333,
+    "size": 3790233,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 77,
+    "name": "Orquesta Inmensidad - Detalles.m4a",
+    "duration": 319.693333,
+    "size": 5175555,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 78,
+    "name": "Orquesta Octava Dimensión - Nunca cambies.m4a",
+    "duration": 271.020975,
+    "size": 4388322,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 79,
+    "name": "Orquesta Sabrosura - Cuando aparezca el amor.m4a",
+    "duration": 283.575986,
+    "size": 4591818,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 80,
+    "name": "Orquesta Sociedad 76 - La solución de la salsa.m4a",
+    "duration": 225.48,
+    "size": 3651885,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 81,
+    "name": "Paquito Guzmán - Qué voy a hacer sin ti.m4a",
+    "duration": 332.644331,
+    "size": 5385723,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 82,
+    "name": "Pedro Conga - Me niegas tanto amor.m4a",
+    "duration": 283.75,
+    "size": 4540256,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 83,
+    "name": "Polo Montañez - Un montón de estrellas.m4a",
+    "duration": 364.573333,
+    "size": 5902750,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 84,
+    "name": "Puerto Rican Power - Solo con un beso.m4a",
+    "duration": 296.693333,
+    "size": 4804731,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 85,
+    "name": "Ray Sepúlveda - No vale la pena enamorarse.m4a",
+    "duration": 353.477369,
+    "size": 5721460,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 86,
+    "name": "Ray Sepúlveda - Una mujer como tú.m4a",
+    "duration": 289.274195,
+    "size": 4682338,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 87,
+    "name": "Rey Ruiz - Mi media mitad.m4a",
+    "duration": 293.500226,
+    "size": 4750798,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 88,
+    "name": "Rubby Haddock and Orchesta - Todo me huele a ti.m4a",
+    "duration": 323.16,
+    "size": 5232303,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 89,
+    "name": "Salsa Kids - Siempre.m4a",
+    "duration": 299.389387,
+    "size": 5889781,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 90,
+    "name": "Son Habana - Te dejo libre.m4a",
+    "duration": 353.867006,
+    "size": 5729811,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 91,
+    "name": "Sonora Ponceña - Boranda.m4a",
+    "duration": 434.973333,
+    "size": 7042133,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 92,
+    "name": "Sonora Ponceña - Sola vaya.m4a",
+    "duration": 377.213424,
+    "size": 6107877,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 93,
+    "name": "Sonora Ponceña - Yambeque.m4a",
+    "duration": 381.852154,
+    "size": 6180693,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 94,
+    "name": "Sonora Ponceña - Yaré.m4a",
+    "duration": 351.546666,
+    "size": 5691612,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 95,
+    "name": "The Latin Brothers - Buscándote.m4a",
+    "duration": 277.636009,
+    "size": 4496517,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 96,
+    "name": "The Latin Brothers - Patrona de los reclusos.m4a",
+    "duration": 375.2,
+    "size": 6074965,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 97,
+    "name": "The New York Band - Nadie como tú.m4a",
+    "duration": 287.370158,
+    "size": 4651545,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 98,
+    "name": "Tito Allen - Como tú.m4a",
+    "duration": 356.64,
+    "size": 5774791,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 99,
+    "name": "Tito Nieves - De mi enamorate.m4a",
+    "duration": 309.323875,
+    "size": 4950016,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 100,
+    "name": "Tito Rojas - Siempre seré.m4a",
+    "duration": 322.50195,
+    "size": 5221477,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 101,
+    "name": "Viti Ruiz - Caricias prohibidas.m4a",
+    "duration": 319.018956,
+    "size": 5164092,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 102,
+    "name": "Willie Colón - Oh qué será.m4a",
+    "duration": 396.759365,
+    "size": 6422045,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 103,
+    "name": "Willie Colón - Sin poderte hablar.m4a",
+    "duration": 321.261746,
+    "size": 5201271,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 104,
+    "name": "Willie Colón y Héctor Lavoe - Aguanile.m4a",
+    "duration": 396.991564,
+    "size": 6425648,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 105,
+    "name": "Willie Colón y Héctor Lavoe - El día de mi suerte.m4a",
+    "duration": 353.384489,
+    "size": 5719958,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 106,
+    "name": "Willie González - Hazme olvidarla.m4a",
+    "duration": 337.173333,
+    "size": 5460093,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 107,
+    "name": "Willie González - No podrás escapar de mi.m4a",
+    "duration": 332.533333,
+    "size": 5383825,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 108,
+    "name": "Willie González - Quiero morir en tu piel.m4a",
+    "duration": 377.16,
+    "size": 6107031,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 109,
+    "name": "Willie González - Si tú fueras mia.m4a",
+    "duration": 307.133333,
+    "size": 4973443,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 110,
+    "name": "Willie González - Tanto amor.m4a",
+    "duration": 265.863999,
+    "size": 4258176,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 111,
+    "name": "Willie Rosario - Anuncio clasificado.m4a",
+    "duration": 301.010521,
+    "size": 4873629,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 112,
+    "name": "Willie Rosario - El timbal de Carlitos.m4a",
+    "duration": 331.2065,
+    "size": 5334120,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 113,
+    "name": "Willie Rosario - La mitad.m4a",
+    "duration": 330.933333,
+    "size": 5357638,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 114,
+    "name": "Willie Rosario - Tormenta.m4a",
+    "duration": 401.222688,
+    "size": 6422528,
+    "type": "audio/mp4"
+  },
+  {
+    "id": 115,
+    "name": "Wilmer Cartagena - Un amor como el tuyo.m4a",
+    "duration": 291.990929,
+    "size": 4727940,
+    "type": "audio/mp4"
+  }
+]
